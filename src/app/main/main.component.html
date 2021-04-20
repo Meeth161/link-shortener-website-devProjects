@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="p-3">
+        <span class="display-4 title">Link Shortner</span>
+        <span class="sub-title position-absolute end-0 p-3">DevProjects</span>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-6">
+            <input class="form-control form-control-lg shadow input-link py-3" type="text"
+                placeholder="Enter Link Address (URL)" aria-label=".form-control-lg example" [(ngModel)]="url">
+            <div class="form-text">Ex: https://www.example.com</div>
+            <div class="d-grid mt-3">
+                <button class="btn btn-lg btn-shorten shadow" type="button" (click)="shortenURL()">
+                    Shorten
+                </button>
+            </div>
+            <div class="alert alert-danger mt-5" role="alert" *ngIf="showInvalidInputError">
+                {{ invalidInputMessage }}
+            </div>
+            <div class="mt-5 short-link" *ngIf="showLink">
+                <div class="card p-5 shadow">
+                    <div class="card-body">
+                        <button id="btn-copy" class="btn btn-copy m-2 py-2 position-absolute top-0 end-0 shadow"
+                            data-clipboard-target="#link">
+                            <i class="far fa-clone fa-2x"></i>
+                        </button>
+                        <div id="link" class="my-2 text-center link"> 🎉 {{ link }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-success mt-3" role="alert" *ngIf="showCopiedMessage">
+                Link Copied to Clipboard! 🎉
+            </div>
+        </div>
+    </div>
+</div>
